@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
-            background: url('/images/index_background.png') repeat;
+            background: url('images/index_background.png') repeat;
             background-size: auto;
             animation: moveBackground 45s linear infinite;
             display: flex;
@@ -31,42 +31,49 @@
         }
 
         .login-container {
-            background: #2b2b2b;
-            border: 1px solid #444;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
             width: 100%;
             max-width: 400px;
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
-            color: #e4e4e4;
+            color: #fff;
         }
 
         .login-container h2 {
-            font-size: 1.8rem;
-            color: #ff6f61;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #FFF;
+            margin-bottom: 1.5rem;
             font-weight: bold;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-container h2 i {
+            color: #9013FE;
         }
 
         .form-group {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-control {
-            background-color: #3b3b3b;
-            border: 1px solid #666;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 6px;
-            color: #e4e4e4;
+            color: #fff;
             font-size: 1rem;
             padding: 0.75rem 2.5rem 0.75rem 0.5rem;
+            backdrop-filter: blur(5px);
         }
 
         .form-control:focus {
-            border-color: #ff6f61;
+            border-color: #9013FE;
             outline: none;
-            box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+            box-shadow: 0 0 10px rgba(144, 19, 254, 0.5);
         }
 
         .form-label-floating {
@@ -75,7 +82,7 @@
             left: 0.75rem;
             transform: translateY(-50%);
             transition: all 0.2s ease;
-            color: #aaa;
+            color: #fff;
             font-size: 1rem;
             pointer-events: none;
         }
@@ -85,9 +92,10 @@
             top: 0;
             left: 0.5rem;
             font-size: 0.75rem;
-            color: #ff6f61;
-            background-color: #2b2b2b;
+            color: #9013FE;
+            background-color: White;
             padding: 0 0.25rem;
+            border-radius: 5px;
         }
 
         .password-toggle {
@@ -96,20 +104,20 @@
             right: 0.75rem;
             transform: translateY(-50%);
             cursor: pointer;
-            color: #aaa;
+            color: #fff;
         }
 
         .error-message {
             position: absolute;
-            bottom: 0;
+            bottom: -1.2rem;
             left: 0.5rem;
             font-size: 0.75rem;
-            color: #ff6f61;
-            background: #2b2b2b;
-            padding: 0 0.25rem;
-            transform: translateY(50%);
+            color: Black;
             display: none;
-            transition: all 0.3s ease;
+        }
+
+        .error-message i {
+            color: red;
         }
 
         .error-message.show {
@@ -117,28 +125,33 @@
         }
 
         .btn-primary {
-            background-color: #ff6f61;
+            background-color: #9013FE;
             color: #fff;
             border: none;
+            border-radius: 20px;
+            padding: 0.5rem 2rem;
         }
 
         .btn-primary:hover {
-            background-color: #e55e54;
+            background-color: #7D0DC9;
+            box-shadow: 0 4px 15px rgba(144, 19, 254, 0.4);
         }
 
         .btn-secondary {
-            background-color: #444;
-            color: #ff6f61;
-            border: 1px solid #ff6f61;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 20px;
+            padding: 0.5rem 2rem;
         }
 
         .btn-secondary:hover {
-            background-color: #ff6f61;
-            color: #fff;
+            background-color: #fff;
+            color: #9013FE;
         }
 
         a {
-            color: #ff6f61;
+            color: #fff;
             text-decoration: none;
             font-size: 0.9rem;
         }
@@ -150,23 +163,25 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>WhatsQuiz</h2>
+        <h2><i class="fa-solid fa-graduation-cap"></i> WhatsQuiz</h2>
         <form id="loginForm">
             <div class="form-group">
                 <input type="text" class="form-control" id="usernameOrEmail" placeholder=" " required>
-                <label for="usernameOrEmail" class="form-label-floating">Username oder Email</label>
-                <div class="error-message" id="usernameError">Ungülter Username oder Email</div>
+                <label for="usernameOrEmail" class="form-label-floating"><i class="fa-solid fa-user"></i> Username oder Email</label>
+                <div class="error-message" id="usernameError"><i class="fa-solid fa-xmark"></i> Ungülter Username oder Email</div>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password" placeholder=" " required>
-                <label for="password" class="form-label-floating">Passwort</label>
+                <label for="password" class="form-label-floating"><i class="fa-solid fa-lock"></i> Passwort</label>
                 <span class="password-toggle" id="togglePassword"><i class="fa fa-eye"></i></span>
-                <div class="error-message" id="passwordError">Ungülties Passwort</div>
+                <div class="error-message" id="passwordError"><i class="fa-solid fa-xmark"></i> Ungültiges Passwort</div>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="button" class="btn btn-secondary" disabled>Kein Konto? Anmelden</button>
-            <div class="mt-3">
-                <a href="#">Passwort vergessen?</a>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary p-2 px-3" title="Funktion in Beta-Version nicht verfügbar."><i class="fa-solid fa-user-plus"></i> Kein Konto? Anmelden</button>           
+                <button type="submit" class="btn btn-primary p-2 px-3"><i class="fa-solid fa-key"></i> Login</button>
+            </div>
+            <div class="d-flex justify-content-start mt-4">
+                <a href="#" title="Funktion in Beta-Version nicht verfügbar."><i class="fa-regular fa-circle-question"></i> Passwort vergessen?</a> 
             </div>
         </form>
     </div>
@@ -207,7 +222,7 @@
             }
 
             if (!hasError) {
-                alert(`Login successful for ${usernameOrEmail}`);
+                window.location.href = "study_programm.html";
             }
         });
     </script>
