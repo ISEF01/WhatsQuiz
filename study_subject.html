@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Selection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1f1f1f;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group-container {
+            background: #2b2b2b;
+            border: 1px solid #444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            color: #e4e4e4;
+        }
+
+        .group-container h2 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .group-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .group-item {
+            background: #3b3b3b;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border: 1px solid #666;
+            border-radius: 6px;
+            color: #e4e4e4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .group-item:hover {
+            background-color: #ff6f61;
+            color: #fff;
+            border-color: #ff6f61;
+        }
+
+        .group-item i {
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+
+        .group-item:hover i {
+            color: #fff;
+        }
+
+        .btn-back {
+            background-color: #444;
+            color: #ff6f61;
+            border: 1px solid #ff6f61;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #ff6f61;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="group-container">
+        <h2>Choose Your Subject Group</h2>
+        <ul class="group-list">
+            <li class="group-item">
+                Mathematics <i class="bi bi-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                Programming Fundamentals <i class="bi bi-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                Data Structures & Algorithms <i class="bi bi-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                Operating Systems <i class="bi bi-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                Databases <i class="bi bi-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                Machine Learning <i class="bi bi-chevron-right"></i>
+            </li>
+        </ul>
+        <a href="study_programm.html" class="btn-back">&#8592; Back to Courses</a>
+    </div>
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

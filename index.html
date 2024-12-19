@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('background.png') repeat;
+            background-size: auto;
+            animation: moveBackground 45s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes moveBackground {
+            from {
+                background-position: 0 -1024px;
+            }
+            to {
+                background-position: -1024px 0;
+            }
+        }
+
+        .login-container {
+            background: #2b2b2b;
+            border: 1px solid #444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            padding: 1.5rem;
+            text-align: center;
+            color: #e4e4e4;
+        }
+
+        .login-container h2 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            background-color: #3b3b3b;
+            border: 1px solid #666;
+            border-radius: 6px;
+            color: #e4e4e4;
+            font-size: 1rem;
+            padding: 0.75rem 2.5rem 0.75rem 0.5rem;
+        }
+
+        .form-control:focus {
+            border-color: #ff6f61;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+        }
+
+        .form-label-floating {
+            position: absolute;
+            top: 50%;
+            left: 0.75rem;
+            transform: translateY(-50%);
+            transition: all 0.2s ease;
+            color: #aaa;
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .form-control:focus ~ .form-label-floating,
+        .form-control:not(:placeholder-shown) ~ .form-label-floating {
+            top: 0;
+            left: 0.5rem;
+            font-size: 0.75rem;
+            color: #ff6f61;
+            background-color: #2b2b2b;
+            padding: 0 0.25rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .error-message {
+            position: absolute;
+            bottom: 0;
+            left: 0.5rem;
+            font-size: 0.75rem;
+            color: #ff6f61;
+            background: #2b2b2b;
+            padding: 0 0.25rem;
+            transform: translateY(50%);
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .btn-primary {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55e54;
+        }
+
+        .btn-secondary {
+            background-color: #444;
+            color: #ff6f61;
+            border: 1px solid #ff6f61;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ff6f61;
+            color: #fff;
+        }
+
+        a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Modern Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="tel" class="form-control" id="phone" placeholder=" " required>
+                <label for="phone" class="form-label-floating">Phone Number</label>
+                <div class="error-message" id="phoneError">Invalid phone number</div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder=" " required>
+                <label for="password" class="form-label-floating">Password</label>
+                <span class="password-toggle" id="togglePassword">👁️</span>
+                <div class="error-message" id="passwordError">Incorrect password</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-secondary">No Account? Sign Up</button>
+            <div class="mt-3">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const passwordInput = document.getElementById('password');
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.getElementById('phoneError');
+        const passwordError = document.getElementById('passwordError');
+        const togglePassword = document.getElementById('togglePassword');
+
+        // Toggle Password Visibility
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            phoneError.classList.remove('show');
+            passwordError.classList.remove('show');
+
+            const phone = phoneInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            let hasError = false;
+
+            if (!/^\d{10}$/.test(phone)) {
+                phoneError.classList.add('show');
+                hasError = true;
+            }
+
+            if (password !== 'password123') { // Example correct password
+                passwordError.classList.add('show');
+                hasError = true;
+            }
+
+            if (!hasError) {
+                alert(`Login successful for ${phone}`);
+            }
+        });
+    </script>
+</body>
+</html>
