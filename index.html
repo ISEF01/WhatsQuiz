@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: url('background.png') repeat;
+            background: url('images/index_background.png') repeat;
             background-size: auto;
             animation: moveBackground 45s linear infinite;
             display: flex;
@@ -152,9 +152,9 @@
         <h2>Modern Login</h2>
         <form id="loginForm">
             <div class="form-group">
-                <input type="tel" class="form-control" id="phone" placeholder=" " required>
-                <label for="phone" class="form-label-floating">Phone Number</label>
-                <div class="error-message" id="phoneError">Invalid phone number</div>
+                <input type="text" class="form-control" id="usernameOrEmail" placeholder=" " required>
+                <label for="usernameOrEmail" class="form-label-floating">Username or Email</label>
+                <div class="error-message" id="usernameError">Invalid username or email</div>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password" placeholder=" " required>
@@ -174,8 +174,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const passwordInput = document.getElementById('password');
-        const phoneInput = document.getElementById('phone');
-        const phoneError = document.getElementById('phoneError');
+        const usernameInput = document.getElementById('usernameOrEmail');
+        const usernameError = document.getElementById('usernameError');
         const passwordError = document.getElementById('passwordError');
         const togglePassword = document.getElementById('togglePassword');
 
@@ -189,16 +189,16 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            phoneError.classList.remove('show');
+            usernameError.classList.remove('show');
             passwordError.classList.remove('show');
 
-            const phone = phoneInput.value.trim();
+            const usernameOrEmail = usernameInput.value.trim();
             const password = passwordInput.value.trim();
 
             let hasError = false;
 
-            if (!/^\d{10}$/.test(phone)) {
-                phoneError.classList.add('show');
+            if (!usernameOrEmail || !usernameOrEmail.includes('@') && usernameOrEmail.length < 4) {
+                usernameError.classList.add('show');
                 hasError = true;
             }
 
@@ -208,7 +208,7 @@
             }
 
             if (!hasError) {
-                alert(`Login successful for ${phone}`);
+                alert(`Login successful for ${usernameOrEmail}`);
             }
         });
     </script>
