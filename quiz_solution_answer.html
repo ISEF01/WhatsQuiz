@@ -1,0 +1,63 @@
+      <!-- Kopfzeile im Chat -->
+      <div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-graduation-cap rounded-circle me-2 text-white"></i>
+          <span class="text-white">Kapitel 1</span>
+        </div>
+        <div>
+          <i class="text-white fa-solid fa-right-from-bracket bounce-icon" title="Abmelden" style="cursor: pointer;" onclick="location.href='http://127.0.0.1:5500/indextest.html';"></i>
+        </div>
+      </div>
+
+      <!-- Nachrichtenliste -->
+      <div class="flex-grow-1 overflow-auto p-3" id="background-main">
+        <div class="d-flex align-items-start mb-3">
+          <div class="bg-white p-3 rounded shadow-sm">
+            <span>Welche Farbe hat meine Unterhose?</span>
+            <div class="text-muted small text-end">13:05</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-end justify-content-end mb-3">
+          <div class="bg-primary text-white p-3 rounded shadow-sm">
+            <span id="quizAnswerFinalSpan"></span>
+            <div class="small text-end">
+              13:06
+              <i class="fas fa-check-double ms-2"></i>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+          <div class="bg-white p-3 rounded shadow-sm">
+            <span>Die korrekt Antwort wäre: Lila blassblau mit grünen pünktchen.</span>
+            <div class="text-muted small text-end">13:05</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback-Container -->
+      <div class="container mt-4 d-flex justify-content-center">
+        <div class="p-4 bg-grey rounded shadow-sm" style="max-width: 400px;">
+          <div class="mb-3 text-center">
+            <strong>War deine Antwort korrekt?</strong>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-danger" onclick="quizWrong();">Falsch</button>
+            <button class="btn btn-success" onclick="quizCorrect();">Richtig</button>
+          </div>
+          <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" id="userGeneratedQuestions" checked>
+            <label class="form-check-label btn-outline-primary" for="userGeneratedQuestions">
+              Direkt zum Fragen-Chat (wenn falsch)?
+            </label>
+          </div>
+          <div class="text-muted small">
+            Bitte vergleiche deine Lösung mit der Musterlösung und bestätige entsprechend.
+          </div>
+        </div>
+      </div>
+      <!-- Eingabefeld -->
+      <div class="d-flex border-top">
+        <input type="text" class="form-control no-corners" placeholder="" disabled>
+        <button class="btn btn-primary no-corners" disabled>Senden</button>
+      </div>
+

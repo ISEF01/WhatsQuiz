@@ -1,0 +1,26 @@
+      <!-- Kopfzeile im Chat -->
+      <div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-user-graduate rounded-circle me-2 text-white"></i>
+          <span class="text-white">Max Mustermann</span>
+        </div>
+        <div>
+          <i class="text-white fa-solid fa-right-from-bracket bounce-icon" title="Abmelden" style="cursor: pointer;" onclick="location.href='http://127.0.0.1:5500/indextest.html';"></i>
+        </div>
+      </div>
+
+      <!-- Nachrichtenliste -->
+      <div class="flex-grow-1 overflow-auto p-3" id="background-main">
+        <div class="d-flex align-items-start mb-3">
+          <div class="bg-white p-3 rounded shadow-sm">
+            <span>Welche Farbe hat meine Unterhose?</span>
+            <div class="text-muted small text-end">13:05</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eingabefeld -->
+      <div class="d-flex border-top">
+        <input id="quizAnswer" type="text" class="form-control no-corners" placeholder="Antwort eingeben...">
+        <button class="btn btn-primary no-corners" onclick="quizAnswer();">Antworten</button>
+      </div>

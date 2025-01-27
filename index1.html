@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨WhatsQuiz</title>
+
+  <!-- Google Font: Roboto -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome für Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Eigene CSS-Datei -->
+  <style>
+    body {
+      background-color: #F2F2F2;
+      font-family: 'Roboto', sans-serif;
+    }
+    .bg-light {
+      background-color: #F2F2F2 !important;
+    }
+    .btn-outline-secondary {
+      border-color: #47654A;
+      color: #47654A;
+    }
+    .btn-outline-secondary:hover {
+      background-color: #47654A;
+      color: #F2F2F2;
+    }
+    .btn-warning {
+      background-color: #47654A !important;
+      border-color: #47654A !important;
+    }
+    .btn-warning:hover {
+      background-color: #F2F2F2 !important;
+      color: #47654A !important;
+    }
+    .list-group-item.active {
+      background-color: #47654A !important;
+      border-color: #47654A !important;
+    }
+    .list-group-item {
+      background-color: #F2F2F2;
+    }
+    .list-group-item:hover {
+      background-color: #E8E8E8;
+    }
+    .bg-primary {
+      background-color: #47654A !important;
+    }
+    .text-white {
+      color: #F2F2F2 !important;
+    }
+    .text-muted {
+      color: #6c757d !important;
+    }
+    .border-top {
+      border-color: #47654A !important;
+    }
+    #background-main {
+      background: #F2F2F2 url('https://www.transparenttextures.com/patterns/skulls.png') repeat;
+    }
+    #background-main-quiz {
+      background: #F2F2F2 url('https://www.transparenttextures.com/patterns/skulls.png') repeat;      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 56px - 56px); /* Höhe abzüglich Kopf- und Fußzeile */
+    }
+    .navbar-top {
+      background-color: #47654A !important;
+    }
+    .no-corners {
+      border-radius: 0 !important;
+    }
+  .rotate-icon {
+    transition: transform 0.5s ease;
+    transform: rotate(0deg);
+  }
+  .rotate-icon:hover {
+    animation: continuous-rotation 3s linear infinite;
+  }
+  @keyframes continuous-rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+    /* Standardzustand */
+    .bounce-icon {
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+  }
+
+  /* Animation bei Hover */
+  .bounce-icon:hover {
+    animation: bounce-twice 2s ease infinite;
+  }
+
+  @keyframes bounce-twice {
+    0% {
+      transform: translateX(0);
+    }
+    15% {
+      transform: translateX(-10px);
+    }
+    30% {
+      transform: translateX(0);
+    }
+    45% {
+      transform: translateX(-10px);
+    }
+    60% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .username {
+      font-weight: bold;
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    .container-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .container-box2 {
+      /* display: flex;
+      flex-direction: column;
+      align-items: center; */
+      max-width: 800px;
+      margin: auto;
+      justify-content: center;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .progress-container {
+      width: 100%;
+    }
+    #userGeneratedQuestions {
+      border: 2px solid #0d6efd; /* Blau wie btn-outline-primary */
+      border-radius: 0.25rem; /* Optional: Abgerundete Ecken */
+    }
+    #userGeneratedQuestions:checked {
+      background-color: #0d6efd; /* Hintergrundfarbe bei aktivierter Checkbox */
+      border-color: #0d6efd; /* Border bleibt blau */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- SIDEBAR (linke Seite) -->
+    <div class="col-3 bg-light p-0 border-end">
+
+      <!-- Kopfbereich der Sidebar -->
+      <div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-cog me-3 text-white rotate-icon" title="Einstellungen" style="font-size: 24px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#settingsModal"></i>
+        </div>
+      </div>
+
+      <!-- Suchleiste -->
+      <div class="p-3">
+        <input type="text" class="form-control" placeholder="Suchen oder neuen Chat beginnen">
+      </div>
+
+      <!-- Buttons nebeneinander mit Icons -->
+      <div class="btn-group d-flex mb-3 mx-3" data-toggle="buttons">
+        <label class="btn btn-outline-secondary flex-grow-1 mx-1">
+          <input type="radio" name="options" id="chats" autocomplete="off" onclick="selectChat();" hidden>
+          <i class="fas fa-comments"></i> <!-- Chats -->
+        </label>
+        <label class="btn btn-outline-secondary flex-grow-1 mx-1">
+          <input type="radio" name="options" id="answers" autocomplete="off" onclick="selectAnswers();" hidden>
+          <i class="fas fa-question-circle"></i> <!-- Antworten -->
+        </label>
+        <label class="btn btn-outline-secondary flex-grow-1 mx-1">
+          <input type="radio" name="options" id="questions" autocomplete="off" onclick="selectQuestions();" hidden>
+          <i class="fas fa-pen"></i> <!-- Fragen -->
+        </label>
+        <label class="btn btn-warning flex-grow-1 mx-1 text-white">
+          <input type="radio" name="options" id="quiz" autocomplete="off" onclick="selectQuiz();" hidden>
+          <i class="fas fa-graduation-cap"></i> <!-- Quiz -->
+        </label>
+      </div>
+      
+      
+
+      <!-- Chat-Liste -->
+      <div id="chat-list" class="list-group">
+      </div>
+    </div>
+
+    <!-- CHAT-BEREICH (rechte Seite) -->
+    <div id="main-area" class="col-9 d-flex flex-column p-0">
+            <!-- Kopfzeile im Chat -->
+            <div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+              <div class="d-flex align-items-center">
+                <span class="text-white"></span>
+              </div>
+              <div style="cursor: pointer;" onclick="location.href='http://127.0.0.1:5500/indextest.html';">
+                <i class="text-white fa-solid fa-right-from-bracket bounce-icon" title="Abmelden"></i>
+              </div>
+            </div>
+      
+            <!-- Nachrichtenliste -->
+            <div class="flex-grow-1 overflow-auto p-3" id="background-main">
+              <img src="intro.png">
+            </div>
+      
+            <!-- Eingabefeld -->
+            <!-- <div class="d-flex border-top">
+              <input type="text" class="form-control no-corners" placeholder="Nachricht eingeben...">
+              <button class="btn btn-primary no-corners">Senden</button>
+            </div> -->
+    </div>
+
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Eigene JavaScript-Datei -->
+<script src="script.js"></script>
+
+<!-- Einstellungen Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingsModalLabel">Einstellungen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- Studiengang Dropdown -->
+          <div class="mb-3">
+            <label for="studyProgram" class="form-label">Studiengang wählen</label>
+            <select class="form-select" id="studyProgram">
+              <option selected>Bitte wählen...</option>
+              <option value="informatik">Informatik</option>
+              <option value="wirtschaft">Wirtschaft</option>
+              <option value="design">Design</option>
+            </select>
+          </div>
+
+          <!-- Hintergrundbild Dropdown -->
+          <div class="mb-3">
+            <label for="backgroundImage" class="form-label">Hintergrundbild auswählen</label>
+            <select class="form-select" id="backgroundImage">
+              <option selected>Bitte wählen...</option>
+              <option value="skulls">Schädel</option>
+              <option value="dots">Punkte</option>
+              <option value="grid">Gitter</option>
+            </select>
+          </div>
+
+          <!-- Userdaten -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Benutzername</label>
+            <input type="text" class="form-control" id="username" placeholder="Benutzername">
+          </div>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">Vorname</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Vorname">
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Nachname</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Nachname">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-Mail">
+          </div>
+          <div class="mb-3">
+            <label for="passwordReset" class="form-label">Passwort zurücksetzen</label>
+            <input type="password" class="form-control" id="passwordReset" placeholder="Neues Passwort">
+          </div>
+          <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" id="userGeneratedQuestions">
+            <label class="form-check-label btn-outline-primary text-muted small" for="userGeneratedQuestions">
+              Tutorial erneut ablaufen lassen (erst nach erneuter Anmeldung)?
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Speichern</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectChat() {
+    $.ajax({
+      url: './chats.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        loadChatList('chats');
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function selectAnswers() {
+    $.ajax({
+      url: './answers.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        loadChatList('answers');
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function selectQuestions() {
+    $.ajax({
+      url: './questions.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        loadChatList('questions');
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function selectQuiz() {
+    $.ajax({
+      url: './quiz.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        loadChatList('quiz');
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function loadChatList(page) {
+    var pageName = './' + page + '_list.html';
+    $.ajax({
+      url: pageName,
+      method: 'GET',
+      success: function (data) {
+        $('#chat-list').html(data); 
+      },
+      error: function () {
+        $('#chat-list').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function quizStart() {
+    $.ajax({
+      url: './quiz_question.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function quizAnswer() {
+    var quizAnswer = document.getElementById('quizAnswer').value;
+    $.ajax({
+      url: './quiz_solution.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        var quizAnswerSpan = document.getElementById('quizAnswerSpan');
+        quizAnswerSpan.innerHTML = quizAnswer;
+        setTimeout(function(){
+          quizAnswerFinal(quizAnswer);
+        }, 1000);
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function quizAnswerFinal(forceAnswer) {
+    $.ajax({
+      url: './quiz_solution_answer.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        var quizAnswerFinalSpan = document.getElementById('quizAnswerFinalSpan');
+        quizAnswerFinalSpan.innerHTML = forceAnswer;
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+  function quizCorrect() {
+    quizStart();
+  }
+  function quizWrong() {
+    var quizAnswer = document.getElementById('quizAnswerFinalSpan').value;
+    $.ajax({
+      url: './quiz_chat.html',
+      method: 'GET',
+      success: function (data) {
+        $('#main-area').html(data); 
+        var quizAnswerFinalSpan = document.getElementById('quizAnswerFinalSpan');
+        quizAnswerFinalSpan.innerHTML = forceAnswer;
+      },
+      error: function () {
+        $('#main-area').html('<p>Fehler beim Laden der Seite.</p>');
+      }
+    });
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+  <!-- Kopfzeile -->
+  <div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+    <div class="d-flex align-items-center">
+      <i class="fa-solid fa-graduation-cap rounded-circle me-2 text-white"></i>
+      <span class="text-white">Quiz</span>
+    </div>
+    <div>
+      <i class="text-white fa-solid fa-right-from-bracket bounce-icon" title="Abmelden" style="cursor: pointer;" onclick="location.href='http://127.0.0.1:5500/indextest.html';"></i>
+    </div>
+  </div>
+
+  <!-- Nachrichtenliste -->
+  <div class="flex-grow-1 overflow-auto p-3" id="background-main-quiz">
+    <div class="container-box my-auto">
+      <!-- Überschrift -->
+      <div class="mb-4">
+        <h2>Informatik</h2>
+      </div>
+
+      <!-- Kapitel wählen -->
+      <div class="mb-3">
+        <label for="chapterSelect" class="form-label">Bitte Kapitel wählen:</label>
+        <select id="chapterSelect" class="form-select">
+          <option>Kapitel auswählen</option>
+          <option>Kapitel 1</option>
+          <option>Kapitel 2</option>
+          <option>Kapitel 3</option>
+          <option>Kapitel 4</option>
+          <option>Kapitel 5</option>
+          <option>Kapitel 6</option>
+          <option>Kapitel 7</option>
+          <option>Kapitel 8</option>
+        </select>
+      </div>
+
+      <!-- User-generated Questions -->
+      <div class="mb-3 form-check">
+        <input class="form-check-input" type="checkbox" id="userGeneratedQuestions">
+        <label class="form-check-label btn-outline-primary" for="userGeneratedQuestions">
+          Quiz mit usergenerierten Fragen?
+        </label>
+      </div>
+
+      <!-- Quiz starten -->
+      <div class="text-center">
+        <button class="btn btn-primary" onclick="quizStart();">Quiz starten</button>
+      </div>
+    </div>
+  </div>

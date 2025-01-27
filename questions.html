@@ -1,0 +1,64 @@
+<!-- Kopfzeile -->
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom navbar-top">
+  <div class="d-flex align-items-center">
+    <i class="fa-solid fa-graduation-cap rounded-circle me-2 text-white"></i>
+    <span class="text-white">Quiz</span>
+  </div>
+  <div>
+    <i class="text-white fa-solid fa-right-from-bracket bounce-icon" title="Abmelden" style="cursor: pointer;" onclick="location.href='http://127.0.0.1:5500/indextest.html';"></i>
+  </div>
+</div>
+
+<!-- Nachrichtenliste -->
+<div class="flex-grow-1 overflow-auto p-3" id="background-main">
+  <div class="container-box2 my-auto">
+    <!-- Überschrift -->
+    <div class="mb-4">
+      <h2>Informatik</h2>
+    </div>
+
+    <!-- Kapitel wählen -->
+    <div class="mb-3">
+      <label for="chapterSelect" class="form-label">Bitte Kapitel wählen:</label>
+      <select id="chapterSelect" class="form-select">
+        <option>Kapitel auswählen</option>
+        <option>Kapitel 1</option>
+        <option>Kapitel 2</option>
+        <option>Kapitel 3</option>
+        <option>Kapitel 4</option>
+        <option>Kapitel 5</option>
+        <option>Kapitel 6</option>
+        <option>Kapitel 7</option>
+        <option>Kapitel 8</option>
+      </select>
+    </div>
+
+    <!-- User-generated Questions -->
+    <div id="userQuestionsInput" class="mb-4">
+      <div class="mb-3">
+        <label for="questionTitle" class="form-label">Titel</label>
+        <input type="text" class="form-control" id="questionTitle" placeholder="Titel eingeben">
+      </div>
+      <div class="mb-3">
+        <label for="questionText" class="form-label">Frage <div class="text-muted small">(Pflichtfeld)</div></label>
+        <textarea class="form-control" id="questionText" rows="3" placeholder="Frage eingeben"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="answerText" class="form-label">Antwort <div class="text-muted small">(Pflichtfeld)</div></label>
+        <textarea class="form-control" id="answerText" rows="3" placeholder="Antwort eingeben"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="questionSource" class="form-label">Quelle</label>
+        <input type="text" class="form-control" id="questionSource" placeholder="Quelle eingeben">
+      </div>
+    </div>
+
+    <!-- Quiz starten -->
+    <div class="text-center pb-3">
+      <button class="btn btn-primary" onclick="alert('Die Funktion ist noch nicht eingebaut.');">Frage speichern</button>
+    </div>
+    <div class="text-muted small text-center">
+      Nachdem die Frage gespeichert wird, wird diese allen Usern von WhatsQuiz zugänglich gemacht. Unangemessene Fragen werden von den Administratoren entfernt.
+    </div>
+  </div>
+</div>
