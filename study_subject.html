@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Selection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: url('images/index_background.png') repeat;
+            background-size: auto;
+            animation: moveBackground 45s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes moveBackground {
+            from {
+                background-position: 0 -1024px;
+            }
+            to {
+                background-position: -1024px 0;
+            }
+        }
+
+        .group-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .group-container h2 {
+            font-size: 1.8rem;
+            color: rgba(144, 19, 254, 0.9);
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .group-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .group-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .group-item:hover {
+            background-color: rgba(144, 19, 254, 0.7);
+            color: #fff;
+            border-color: rgba(144, 19, 254, 0.7);
+        }
+
+        .group-item i {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .group-item:hover i {
+            color: #fff;
+        }
+
+        .btn-back {
+            background-color: rgba(144, 19, 254, 0.8);
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: rgba(125, 13, 201, 0.9);
+            color: #fff;
+        }
+
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+            color: White;
+        }
+    </style>
+</head>
+<body>
+    <div class="group-container">
+        <h2>Wähle ein Fach</h2>
+        <ul class="group-list">
+            <li class="group-item">
+                [IMT101] Mathematik Grundlagen I <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [BWIR01-01] Einführung in das wissenschaftliche Arbeiten <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [BBWL01-01] Betriebswirtschaftslehre <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [BBWL01-02] Betriebswirtschaftslehre <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IGLS01] Grundlagen der industriellen Softwaretechnik <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [DLBDS01] Digital Skills <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IOBP01] Objektorientierte Programmierung <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IOBP02] Objektorientierte Programmierung <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [DLBINGEIT01] Einführung in Internet of Things <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IMT102-01] Mathematik Grundlagen II <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IPWA01] Programmierung von Webanwendungen <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="group-item">
+                [IPWA02] Programmierung von Webanwendungen <i class="fa-solid fa-chevron-right"></i>
+            </li>
+        </ul>
+        <a href="study_programm.html" class="btn-back"><i class="fa-solid fa-left-long"></i> Zu den Kursen</a>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
